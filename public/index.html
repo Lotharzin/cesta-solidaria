@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cesta Solidária</title>
+  <link rel="icon" type="image/svg+xml" href="/img/logo-cesta-solidaria.svg" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="/img/logo-cesta-solidaria.svg" alt="Logo Cesta Solidária" />
+    <div class="titulo">
+      <h1>Cesta Solidária</h1>
+      <p>UNIDOS CONTRA A FOME</p>
+    </div>
+  </header>
+
+  <nav>
+    <button data-tab="campanha" class="ativo">Campanha</button>
+    <button data-tab="doador">Cadastrar Doador</button>
+    <button data-tab="alimento">Cadastrar Alimento</button>
+    <button data-tab="doacao">Registrar Doação</button>
+    <button data-tab="listagens">Listagens</button>
+  </nav>
+
+  <main>
+
+    <!-- CAMPANHA -->
+    <section id="campanha" class="ativa">
+      <div class="card">
+        <h2>Sobre a campanha</h2>
+        <p id="campanha-descricao">Carregando informações...</p>
+        <div class="stats">
+          <div class="stat"><strong id="stat-doadores">0</strong>Doadores</div>
+          <div class="stat"><strong id="stat-doacoes">0</strong>Doações</div>
+          <div class="stat"><strong id="stat-alimentos">0</strong>Alimentos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CADASTRAR DOADOR -->
+    <section id="doador">
+      <div class="card">
+        <h2>Cadastrar Doador</h2>
+        <form id="form-doador">
+          <label>Nome completo
+            <input type="text" name="nome" required />
+          </label>
+          <div class="linha">
+            <label>Telefone
+              <input type="text" name="telefone" placeholder="(00) 00000-0000" required />
+            </label>
+            <label>E-mail
+              <input type="email" name="email" required />
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Endereço</legend>
+            <div class="linha">
+              <label>Rua
+                <input type="text" name="rua" required />
+              </label>
+              <label>Número
+                <input type="text" name="numero" />
+              </label>
+            </div>
+            <div class="linha">
+              <label>Bairro
+                <input type="text" name="bairro" />
+              </label>
+              <label>Cidade
+                <input type="text" name="cidade" required />
+              </label>
+            </div>
+            <label>CEP
+              <input type="text" name="cep" placeholder="00000-000" required />
+            </label>
+          </fieldset>
+
+          <button type="submit">Cadastrar Doador</button>
+          <div class="mensagem" id="msg-doador"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CADASTRAR ALIMENTO -->
+    <section id="alimento">
+      <div class="card">
+        <h2>Cadastrar Alimento</h2>
+        <form id="form-alimento">
+          <label>Nome do alimento
+            <input type="text" name="nome" placeholder="Ex: Arroz, Feijão, Óleo..." required />
+          </label>
+          <div class="linha">
+            <label>Quantidade
+              <input type="number" name="quantidade" min="1" step="1" required />
+            </label>
+            <label>Unidade
+              <select name="unidade" required>
+                <option value="">Selecione</option>
+                <option value="kg">kg</option>
+                <option value="un">unidade(s)</option>
+                <option value="L">litro(s)</option>
+                <option value="pct">pacote(s)</option>
+                <option value="cx">caixa(s)</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">Cadastrar Alimento</button>
+          <div class="mensagem" id="msg-alimento"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- REGISTRAR DOAÇÃO -->
+    <section id="doacao">
+      <div class="card">
+        <h2>Registrar Doação</h2>
+        <form id="form-doacao">
+          <label>Doador
+            <select name="doadorId" id="select-doador" required>
+              <option value="">Selecione um doador</option>
+            </select>
+          </label>
+
+          <label>Alimentos disponíveis
+            <div class="checklist" id="checklist-alimentos">
+              <span class="vazio">Nenhum alimento disponível. Cadastre alimentos primeiro.</span>
+            </div>
+          </label>
+
+          <label>Data da doação
+            <input type="date" name="data" />
+          </label>
+
+          <button type="submit">Registrar Doação</button>
+          <div class="mensagem" id="msg-doacao"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- LISTAGENS -->
+    <section id="listagens">
+      <div class="card">
+        <h2>Doadores cadastrados</h2>
+        <table id="tabela-doadores">
+          <thead>
+            <tr><th>ID</th><th>Nome</th><th>Contato</th><th>Cidade</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Alimentos cadastrados</h2>
+        <table id="tabela-alimentos">
+          <thead>
+            <tr><th>ID</th><th>Nome</th><th>Quantidade</th><th>Situação</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Doações registradas</h2>
+        <table id="tabela-doacoes">
+          <thead>
+            <tr><th>ID</th><th>Data</th><th>Doador</th><th>Alimentos</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>🧺 Cesta Solidária — Sistema de arrecadação de alimentos</footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
